@@ -1,5 +1,47 @@
 <div class="row">
-  <div class="col-md-12">
-    INDEX
+  <div class="col-md-2">
+    <ul class="list-group">
+ 	 <li class="list-group-item" ng-repeat="ensayo in ensayos" ng-click="getMuestras(ensayo.id)">{{ensayo.nombre}}</li>
+ 	</ul>
+  </div>
+  <div class="col-md-8">
+  	<div ng-show="viewFormUpload">
+
+		<div ng-app="fileUpload" ng-controller="MyCtrl">
+		    watching model:
+		    <div class="button" ngf-select ng-model="file">Upload using model $watch</div>
+		    <div class="button" ngf-select ng-model="files" ngf-multiple="true">Upload multiple using model $watch</div>
+		    <div class="button" ngf-select ngf-change="upload($file)">Upload on file change</div>
+		    <div class="button" ngf-select ngf-change="upload($files)" ngf-multiple="true">Upload multiple on file change</div>
+		    
+		</div
+ 	
+  	</div>
+  	<hr/>
+  	<div ng-repeat="muestra in muestras">
+  		<table>
+  			<tr>
+  				<td></td>
+  			</tr>
+  			<tr>
+  				<td><img src="./static/images/{{muestra.imagen}}" width="300" alt="..." class="img-rounded"></td>
+  				<td valign="top" style="padding:20px">
+  					<table>
+  						<tr>
+  							<td><h4>{{muestra.fecha}}</h4></td>
+  						</tr>
+  						<tr>
+  							<td><p>{{muestra.emergencia}} %</p></td>
+  						</tr>
+  						<tr>
+  							<td><p>{{muestra.comentario}}</p></td>
+  						</tr>
+  					</table>
+  				</td>
+  			</tr>
+  		</table>
+  		<hr/>
+	  	
+  	</div>
   </div>
 </div>
