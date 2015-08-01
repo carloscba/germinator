@@ -26,10 +26,15 @@ class MainHandler(webapp.RequestHandler):
 
     self.response.out.write(unicode(outstr))
 
+class histograma(webapp.RequestHandler):
+
+	def get(self):
+		print "hola mundo"
 #---------------------------------------------------------------------------------------
 def main():
   application = webapp.WSGIApplication([
-    ('/.*', MainHandler)
+    ('/.*', MainHandler),
+    ('/histograma', histograma)
   ], debug=True)
   
   wsgiref.handlers.CGIHandler().run(application)
