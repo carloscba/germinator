@@ -7,7 +7,7 @@
  * # MainCtrl
  * Controller of the kuApp
  */
-angular.module('kuApp').controller('indexCtrl', function ($scope, $http, globalService, $location, Upload) {
+angular.module('kuApp').controller('indexCtrl', function ($scope, $http, globalService, $location) {
 
 	
 	$scope.init = function(){
@@ -26,19 +26,9 @@ angular.module('kuApp').controller('indexCtrl', function ($scope, $http, globalS
 
 	};
 
-	$scope.sendImage = function(){
-
-		$http({
-		    method: 'POST',
-		    url: './data/save.php',
-		    data: 'file='+$scope.file+'&data='+JSON.stringify($scope.mediaPlanData),
-		    headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-		});		
-
-	}
-
-	$scope.getMuestras = function(){
+	$scope.getMuestras = function(n){
 		$scope.viewFormUpload = true;
+		$scope.currentEnsayo = $scope.ensayos[n];
 		/*$http.get('./mediaplans?idEnsayo='+$scope.client).success(function(e, status, headers, config) {
 			$scope.mediaPlans = e;
 		});*/	
